@@ -6,6 +6,11 @@
     "--header-insertion=never"
   ],
   "suggest.noselect": false,
-  "suggest.enablePreview": true
+  "coc.preferences.formatOnSaveFiletypes": [
+    "c",
+    "cpp",
+    "h",
+    "hpp"
+  ]
 }
 

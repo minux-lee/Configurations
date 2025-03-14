@@ -1,4 +1,6 @@
 call plug#begin()
+  Plug 'tpope/vim-fugitive'
+  Plug 'airblade/vim-gitgutter'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'preservim/nerdtree' |
@@ -9,6 +11,8 @@ call plug#begin()
   Plug 'dense-analysis/ale'
   Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
 call plug#end()
+
+let g:gitgutter_sign_column_always = 1
 
 set encoding=UTF-8
 
@@ -24,8 +28,8 @@ let NERDTreeIgnore=['\.swp$']
 set number
 
 filetype plugin indent on
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 
 inoremap <expr> ) getline('.')[col('.')-1] == ')' ? "\<Right>" : ")"
@@ -65,5 +69,8 @@ inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <silent><expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 
 let g:NERDTreeGitStatusUseNerdFonts = 1
+
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.json,*.md,*.vue,*.html,*.yaml,*.yml,*.svelte :Prettier
 
 
